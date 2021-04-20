@@ -7,6 +7,5 @@ program
   .description('Compares two configuration files and shows a difference.')
   .arguments('<configFileOne> <configFileTwo>')
   .option('-f, --format [type]', 'output format')
-  .action((configFileOne, configFileTwo) => (
-    console.log(genDiff(configFileOne, configFileTwo))));
+  .action((configFileOne, configFileTwo) => (console.log(genDiff(configFileOne, configFileTwo))));
 program.parse(process.argv);

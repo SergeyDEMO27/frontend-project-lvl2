@@ -23,19 +23,15 @@ const createDiff = (fileOne, fileTwo) => {
     }
     acc.push([`  - ${key}: ${fileOne[key]}`], [`  + ${key}: ${fileTwo[key]}`]);
     return acc;
-  }, [['{']]);
-  result.push(['}']);
-  return result.join('\n');
+  }, []);
+  return `{\n${result.join('\n')}\n}`;
 };
 
 const genDiff = (fileOne, fileTwo) => {
-  const fileOneData = fs.readFileSync(path.resolve(fileOne), 'utf-8');
-  const fileTwoData = fs.readFileSync(path.resolve(fileTwo), 'utf-8');
+  const firstJsonFile = JSON.parse(fs.readFileSync(path.resolve(fileOne)));
+  const secondJsonFile = JSON.parse(fs.readFileSync(path.resolve(fileTwo)));
 
-  const fileOneParce = JSON.parse(fileOneData);
-  const fileTwoParce = JSON.parse(fileTwoData);
-
-  return createDiff(fileOneParce, fileTwoParce);
+  return createDiff(firstJsonFile, secondJsonFile);
 };
 
 export default genDiff;
