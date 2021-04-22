@@ -1,6 +1,5 @@
 import _ from 'lodash';
-import fs from 'fs';
-import path from 'path';
+import parse from './src/parcers.js';
 
 const createDiff = (fileOne, fileTwo) => {
   const allFileKeys = [...Object.keys(fileOne), ...Object.keys(fileTwo)];
@@ -28,10 +27,10 @@ const createDiff = (fileOne, fileTwo) => {
 };
 
 const genDiff = (fileOne, fileTwo) => {
-  const firstJsonFile = JSON.parse(fs.readFileSync(path.resolve(fileOne)));
-  const secondJsonFile = JSON.parse(fs.readFileSync(path.resolve(fileTwo)));
+  const fileOneParced = parse(fileOne);
+  const fileTwoParced = parse(fileTwo);
 
-  return createDiff(firstJsonFile, secondJsonFile);
+  return createDiff(fileOneParced, fileTwoParced);
 };
 
 export default genDiff;
