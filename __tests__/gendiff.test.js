@@ -1,34 +1,34 @@
 import path from 'path';
-import genDiff from '../index.js';
+import fs from 'fs';
+import genDiff from '../src/index.js';
 
+const plainResult = fs
+  .readFileSync(path.resolve(__dirname, './__fixtures__/plain.diff'), 'utf8');
+const recurciveResult = fs
+  .readFileSync(path.resolve(__dirname, './__fixtures__/recurciveResult.diff'), 'utf8');
+const jsonResult = fs
+  .readFileSync(path.resolve(__dirname, './__fixtures__/json.diff'), 'utf8');
 
-const fileOneJson = path.resolve(__dirname, `./__fixtures__/fileOne.json`);
-const fileTwoJson = path.resolve(__dirname, `./__fixtures__/fileTwo.json`);
-const fileOneYml = path.resolve(__dirname, './__fixtures__/fileOne.yml');
-const fileTwoYml = path.resolve(__dirname, './__fixtures__/fileTwo.yml');
-
-
-test('test difference between two yml files', () => {
-  const expectedDifference = `{
-    host: hexlet.io
-  - timeout: 50
-  + timeout: 20
-  - proxy: 123.234.53.22
-  - follow: false
-  + verbose: true
-}`;
-  expect(genDiff(fileOneYml, fileTwoYml)).toEqual(expectedDifference);
+test('genDiff JSON plain', () => {
+  expect(genDiff('file1.json', 'file2.json', 'plain')).toEqual(plainResult);
 });
 
+test('genDiff YML plain', () => {
+  expect(genDiff('file1.yml', 'file2.yml', 'plain')).toEqual(plainResult);
+});
 
-test('test difference between two json files', () => {
-  const expectedDifference = `{
-    host: hexlet.io
-  - timeout: 50
-  + timeout: 20
-  - proxy: 123.234.53.22
-  - follow: false
-  + verbose: true
-}`;
-  expect(genDiff(fileOneJson, fileTwoJson)).toEqual(expectedDifference);
+test('genDiff JSON nested', () => {
+  expect(genDiff('file1.json', 'file2.json', 'stylish')).toEqual(recurciveResult);
+});
+
+test('genDiff YML nested', () => {
+  expect(genDiff('file1.yml', 'file2.yml', 'stylish')).toEqual(recurciveResult);
+});
+
+test('genDiff JSON json', () => {
+  expect(genDiff('file1.json', 'file2.json', 'json')).toEqual(jsonResult);
+});
+
+test('genDiff YML json', () => {
+  expect(genDiff('file1.yml', 'file2.yml', 'json')).toEqual(jsonResult);
 });
