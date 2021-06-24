@@ -1,8 +1,8 @@
 import _ from 'lodash';
 
 const findDiff = (dataOne, dataTwo) => {
-  const commonKeys = _.union(_.keys(dataOne), _.keys(dataTwo));
-  const result = commonKeys.map((node) => {
+  const generalKeys = _.union(_.keys(dataOne), _.keys(dataTwo));
+  const result = generalKeys.map((node) => {
     if (!_.has(dataOne, node)) {
       return { name: node, type: 'added', value: dataTwo[node] };
     }
