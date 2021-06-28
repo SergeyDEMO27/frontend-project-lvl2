@@ -11,7 +11,7 @@ const makeString = (value, spaces = 0) => {
   return `{\n${innerValue}\n${makeTabs(spaces)}}`;
 };
 
-const buildTreeFormat = (diff, spaces = 0) => {
+const stylishFormater = (diff, spaces = 0) => {
   const lines = diff.map((node) => {
     const buildLine = (char, value) => `${makeTabs(spaces)}  ${char} ${node.name}: ${makeString(value, spaces + 1)}`;
     switch (node.type) {
@@ -24,7 +24,7 @@ const buildTreeFormat = (diff, spaces = 0) => {
       case 'removed':
         return buildLine('-', node.value);
       case 'nested':
-        return `${makeTabs(spaces)}    ${node.name}: ${buildTreeFormat(node.children, spaces + 1)}`;
+        return `${makeTabs(spaces)}    ${node.name}: ${stylishFormater(node.children, spaces + 1)}`;
       default:
         throw new Error(`${node.type} is wrong type`);
     }
@@ -33,4 +33,4 @@ const buildTreeFormat = (diff, spaces = 0) => {
   return `{\n${innerValue}\n${makeTabs(spaces)}}`;
 };
 
-export default buildTreeFormat;
+export default stylishFormater;

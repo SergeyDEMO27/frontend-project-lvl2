@@ -12,7 +12,7 @@ const getValue = (value) => {
   return !_.isObject(value) ? value : '[complex value]';
 };
 
-const formatPlain = (diff, depth = '') => {
+const plainFormater = (diff, depth = '') => {
   const result = diff
     .filter((node) => node.type !== 'unchanged')
     .map((node) => {
@@ -24,7 +24,7 @@ const formatPlain = (diff, depth = '') => {
         case 'added':
           return `Property '${getNodeName(node, depth)}' was added with value: ${getValue(node.value)}`;
         case 'nested':
-          return formatPlain(node.children, getNodeName(node, depth));
+          return plainFormater(node.children, getNodeName(node, depth));
         default:
           throw new Error('Unknown node status');
       }
@@ -32,4 +32,4 @@ const formatPlain = (diff, depth = '') => {
   return result.join('\n');
 };
 
-export default formatPlain;
+export default plainFormater;
