@@ -19,14 +19,14 @@
 ### Демонстрация:
 
 flat-сравнение json и yml
-https://asciinema.org/a/JSUVlSt4q0dk2JDMYbQXyY7iJ
-https://asciinema.org/a/UI6XZOLfDvWp2KaAUYzGrhadc
+[![asciicast](https://asciinema.org/a/JSUVlSt4q0dk2JDMYbQXyY7iJ.svg)](https://asciinema.org/a/JSUVlSt4q0dk2JDMYbQXyY7iJ)
+[![asciicast](https://asciinema.org/a/UI6XZOLfDvWp2KaAUYzGrhadc.svg)](https://asciinema.org/a/UI6XZOLfDvWp2KaAUYzGrhadc)
 
 nested-сравнение json и yml
-https://asciinema.org/a/VYSS6Yl7uUYo6PHXNqFgOFAye
+[![asciicast](https://asciinema.org/a/VYSS6Yl7uUYo6PHXNqFgOFAye.svg)](https://asciinema.org/a/VYSS6Yl7uUYo6PHXNqFgOFAye)
 
 plain-сравнение json и yml
-https://asciinema.org/a/7ecDAMT8ntQ5DmAMdOMUSqpd3
+[![asciicast](https://asciinema.org/a/7ecDAMT8ntQ5DmAMdOMUSqpd3.svg)](https://asciinema.org/a/7ecDAMT8ntQ5DmAMdOMUSqpd3)
 
 json-сравнение json и yml
-https://asciinema.org/a/uUcedbUflg7qggtMapo6KEdrI
+[![asciicast](https://asciinema.org/a/uUcedbUflg7qggtMapo6KEdrI.svg)](https://asciinema.org/a/uUcedbUflg7qggtMapo6KEdrI)
