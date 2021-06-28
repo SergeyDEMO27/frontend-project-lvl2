@@ -1,13 +1,21 @@
 import path from 'path';
 import fs from 'fs';
+import { cwd } from 'process';
 import genDiff from '../src/index.js';
 
 const plainResult = fs
-  .readFileSync(path.resolve(__dirname, './__fixtures__/plain.diff'), 'utf8');
+  .readFileSync(path.resolve(cwd(), '__tests__/__fixtures__', 'plain.diff'), 'utf8');
 const recurciveResult = fs
-  .readFileSync(path.resolve(__dirname, './__fixtures__/recurciveResult.diff'), 'utf8');
+  .readFileSync(path.resolve(cwd(), '__tests__/__fixtures__', 'recurciveResult.diff'), 'utf8');
 const jsonResult = fs
-  .readFileSync(path.resolve(__dirname, './__fixtures__/json.diff'), 'utf8');
+  .readFileSync(path.resolve(cwd(), '__tests__/__fixtures__', 'json.diff'), 'utf8');
+
+// const plainResult = fs
+//   .readFileSync(path.resolve(__dirname, './__fixtures__/plain.diff'), 'utf8');
+// const recurciveResult = fs
+//   .readFileSync(path.resolve(__dirname, './__fixtures__/recurciveResult.diff'), 'utf8');
+// const jsonResult = fs
+//   .readFileSync(path.resolve(__dirname, './__fixtures__/json.diff'), 'utf8');
 
 test('genDiff JSON plain', () => {
   expect(genDiff('file1.json', 'file2.json', 'plain')).toEqual(plainResult);

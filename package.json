@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/edji777/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/edji777/frontend-project-lvl2/actions)",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "test": "jest"
   },
@@ -19,7 +20,6 @@
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
-  "type": "module",
   "jest": {
     "testEnvironment": "node",
     "transform": {}
