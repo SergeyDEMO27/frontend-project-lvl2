@@ -25,7 +25,7 @@ const formatPlain = (diff, ancestor = '') => {
         case 'removed':
           return `Property '${getNodeName(node, ancestor)}' was removed`;
         case 'changed':
-          return `Property '${getNodeName(node, ancestor)}' was updated. From ${getValue(node.valueBefore)} to ${getValue(node.valueAfter)}`;
+          return `Property '${getNodeName(node, ancestor)}' was updated. From ${getValue(node.value1)} to ${getValue(node.value2)}`;
         case 'added':
           return `Property '${getNodeName(node, ancestor)}' was added with value: ${getValue(node.value)}`;
         case 'nested':

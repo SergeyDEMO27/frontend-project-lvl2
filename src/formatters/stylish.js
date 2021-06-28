@@ -16,7 +16,7 @@ const buildTreeFormat = (diff, spaces = 0) => {
     const buildLine = (char, value) => `${makeTabs(spaces)}  ${char} ${node.name}: ${makeString(value, spaces + 1)}`;
     switch (node.type) {
       case 'changed':
-        return `${makeTabs(spaces)}  - ${node.name}: ${makeString(node.valueBefore, spaces + 1)}\n ${makeTabs(spaces)} + ${node.name}: ${makeString(node.valueAfter, spaces + 1)}`;
+        return `${makeTabs(spaces)}  - ${node.name}: ${makeString(node.value1, spaces + 1)}\n ${makeTabs(spaces)} + ${node.name}: ${makeString(node.value2, spaces + 1)}`;
       case 'unchanged':
         return buildLine(' ', node.value);
       case 'added':
