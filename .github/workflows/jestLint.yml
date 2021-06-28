@@ -1,4 +1,4 @@
-name: Jest
+name: JestLinter
 
 # Run this workflow every time a new commit pushed to your repository
 on: push
@@ -9,6 +9,9 @@ jobs:
   make-test:
     # Name the Job
     name: Runs tests
+  make-lint:
+    # Name the Job
+    name: Runs linter
     # Set the type of machine to run on
     runs-on: ubuntu-latest
 
@@ -24,9 +27,13 @@ jobs:
         env:
           CI: true
 
-      # Runs the Linter action
+      # Runs the Jest action
       - name: Run tests
         run: make test
+
+      # Runs the Linter action
+      - name: Run Linter
+        run: make lint
 
       # Publish code coverage on Code Climate
       # https://github.com/paambaati/codeclimate-action
