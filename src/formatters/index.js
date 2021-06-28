@@ -1,13 +1,18 @@
 import plain from './plain.js';
 import stylish from './stylish.js';
 
-export default (diffTree, format) => {
+const formatter = (format) => {
   switch (format) {
     case 'plain':
-      return plain(diffTree);
+      return plain;
     case 'json':
-      return JSON.stringify(diffTree);
+      return JSON.stringify;
     default:
-      return stylish(diffTree);
+      return stylish;
   }
+};
+
+export default (diff, format) => {
+  const currentFormatter = formatter(format);
+  return currentFormatter(diff);
 };
