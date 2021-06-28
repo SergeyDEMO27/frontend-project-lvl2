@@ -10,8 +10,8 @@ const getExt = (file) => path.extname(file);
 export default (fileOne, fileTwo, format = 'stylish') => {
   const dataOne = readFile(fileOne);
   const dataTwo = readFile(fileTwo);
-  const extOne = getExt(fileOne);
-  const extTwo = getExt(fileTwo);
+  const [, extOne] = getExt(fileOne).split('.');
+  const [, extTwo] = getExt(fileTwo).split('.');
   const fileOneParsed = parse(dataOne, extOne);
   const fileTwoParsed = parse(dataTwo, extTwo);
   const diff = findDiff(fileOneParsed, fileTwoParsed);
