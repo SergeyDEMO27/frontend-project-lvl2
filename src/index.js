@@ -1,19 +1,20 @@
 import fs from 'fs';
 import path from 'path';
+import { cwd } from 'process';
 import findDiff from './findDiff.js';
-import render from './formatters/index.js';
 import parse from './parsers.js';
+import formater from './formatters/index.js';
 
-const readFile = (file) => fs.readFileSync(path.resolve(process.cwd(), './__tests__/__fixtures__', file), 'utf-8');
-const getExt = (file) => path.extname(file);
+const readFile = (fileName) => fs.readFileSync(path.resolve(cwd(), fileName), 'utf-8');
+const getFileExtention = (fileName) => path.extname(fileName);
 
 export default (fileOne, fileTwo, format = 'stylish') => {
-  const dataOne = readFile(fileOne);
-  const dataTwo = readFile(fileTwo);
-  const [, extOne] = getExt(fileOne).split('.');
-  const [, extTwo] = getExt(fileTwo).split('.');
-  const fileOneParsed = parse(dataOne, extOne);
-  const fileTwoParsed = parse(dataTwo, extTwo);
-  const diff = findDiff(fileOneParsed, fileTwoParsed);
-  return render(diff, format);
+  const fileOneContent = readFile(fileOne);
+  const fileTwoContent = readFile(fileTwo);
+  const [, fileOneFormat] = getFileExtention(fileOne).split('.');
+  const [, fileTwoFormat] = getFileExtention(fileTwo).split('.');
+  const fileOneData = parse(fileOneContent, fileOneFormat);
+  const fileTwoData = parse(fileTwoContent, fileTwoFormat);
+  const diff = findDiff(fileOneData, fileTwoData);
+  return formater(diff, format);
 };
