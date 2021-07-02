@@ -3,13 +3,13 @@ import _ from 'lodash';
 const getNodeName = (node, path) => (path ? `${path}.${node.name}` : node.name);
 
 const getValue = (value) => {
-  if (value === null) {
-    return 'null';
+  if (_.isObject(value)) {
+    return '[complex value]';
   }
   if (typeof value === 'string') {
     return `'${value}'`;
   }
-  return !_.isObject(value) ? value : '[complex value]';
+  return value;
 };
 
 const plainFormater = (diff, depth = '') => {
@@ -29,7 +29,7 @@ const plainFormater = (diff, depth = '') => {
           throw new Error('Unknown node status');
       }
     });
-  return result.join('\n');
+  return result.filter(Boolean).join('\n');
 };
 
 export default plainFormater;
