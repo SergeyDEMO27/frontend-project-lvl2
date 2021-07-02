@@ -24,13 +24,13 @@ jobs:
         env:
           CI: true
 
-      # Runs the Jest action
-      - name: Run tests
-        run: make test
-
       # Runs the Linter action
       - name: Run Linter
         run: make lint
+
+      # Runs the Jest action
+      - name: Run Tests
+        run: make test
 
       # Publish code coverage on Code Climate
       # https://github.com/paambaati/codeclimate-action
