@@ -1,17 +1,18 @@
+import _ from 'lodash';
 import path from 'path';
 import fs from 'fs';
 import { cwd } from 'process';
 import genDiff from '../src/index.js';
 
+const getFixturePath = (fileName) => path.resolve(cwd(), '__tests__/__fixtures__', fileName);
+const readFile = (fileName) => fs.readFileSync(getFixturePath(fileName), 'utf8');
 const fileFormats = ['json', 'yml'];
 const resultFormats = ['stylish', 'plain', 'json'];
 const fixtures = {};
-const getFixturePath = (fileName) => path.resolve(cwd(), '__tests__/__fixtures__', fileName);
-const readFile = (fileName) => fs.readFileSync(getFixturePath(fileName), 'utf8');
 
 beforeAll(() => {
   resultFormats.forEach((format) => {
-    fixtures[format] = readFile(`result_${format}.txt`);
+    _.set(fixtures, format, readFile(`result_${format}.txt`));
   });
 });
 

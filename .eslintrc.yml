@@ -22,7 +22,6 @@ rules:
   import/extensions: 0 # FIXME: remove when rule will be adjusted for new nodejs version
   no-underscore-dangle: [2, { "allow": ["__filename", "__dirname"] }]
   fp/no-nil: 0
-  fp/no-mutation: 0
   fp/no-unused-expression: 0
   fp/no-throw: 0
   fp/no-mutating-methods:
